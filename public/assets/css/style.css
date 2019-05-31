@@ -1,0 +1,346 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+a {
+    text-decoration: none;
+}
+html, body {
+    font-family: Helvetica,Arial,sans-serif;
+    background: #ecf0f1;
+    color: #34495e;
+}
+body {
+    font-size: 16px;
+    margin-top: 50px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(170, 170, 170, 0.6);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+::-webkit-resizer {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+/* NOTIFY */
+.notify {
+    top: 5px;
+    right: 5px;
+    position: fixed;
+    z-index: 100;
+}
+.notify div {
+    background: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    color: #7f8c8d;
+    padding: 5px 10px;
+    margin: 1px;
+}
+/* CONTENT */
+.container {
+    width: calc(100% - 20px);
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 50px;
+}
+.header {
+    background: #fff;
+    border-bottom: 1px solid #bdc3c7;
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+.header .logo {
+    float: left;
+}
+.header .logo img {
+    transition: 200ms ease;
+}
+.header .logo a:hover img {
+    animation: spin 2s linear infinite;
+    margin-left: -5px;
+    height: 40px;
+    width: 40px;
+    top: 5;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.header .logo span {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 40px;
+}
+.header .menu {
+    float: right;
+}
+.header img {
+    border-radius: 20px;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 10px;
+}
+.header a {
+    height: 50px;
+    color: #7f8c8d;
+    cursor: pointer;
+    line-height: 10px;
+    padding: 20px 10px;
+    vertical-align: top;
+    display: inline-block;
+    transition: border-bottom 200ms ease;
+}
+.header a:hover {
+    border-bottom: 3px solid #2980b9;
+    color: #2980b9
+}
+.category {
+    line-height: 50px;
+}
+.category a {
+    padding: 15px;
+    color: #34495e;
+    transition: border-bottom 200ms ease;
+}
+.category a:hover,.category a.active {
+    border-bottom: 3px solid #34495e;
+}
+/* GRID */
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+    padding: 20px;
+}
+@media (min-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+@media (min-width: 1200px) {
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+.grid .item {
+    /*filter: blur(10px);*/
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: opacity 500ms ease;
+}
+.grid .item:hover {
+    opacity: .8;
+}
+.grid .item img {
+    width: 100%;
+    display: block;
+    animation: fadein 500ms ease forwards;
+}
+.grid .item img[src=""]{
+    display: none;
+}
+/* MODALS */
+.modal-container {
+    position: fixed;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.modal-overlay {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+.modal-container .modal-table {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+.modal-container .modal-cell {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.modal {
+    background: #ecf0f1;
+    border-radius: 3px;
+    display: inline-block;
+    overflow: hidden;
+    color: #333333;
+    width: 300px;
+}
+.modal .title {
+    background: #ffffff;
+    border-bottom: 1px solid #dfe2e2;
+    overflow: hidden;
+    padding: 10px;
+}
+.modal .title .close {
+    color: #464646;
+    float: right;
+    opacity: 0.6;
+    transition: opacity 200ms ease;
+}
+.modal .title .close:hover {
+    opacity: 1;
+}
+.modal .content {}
+/* UPLOAD MODAL */
+.modal .upload img {
+    display: block;
+    background: #ecf0f1;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.modal .upload img[src=""]{
+    display: none;
+}
+.modal .upload input[type="file"] {
+    display: none;
+}
+.modal .upload ul.tags {
+    background: #f5f5f5;
+    display: inline-flex;
+    flex-wrap: wrap;
+    line-height: 20px;
+    list-style: none;
+    overflow: hidden;
+    padding: 5px;
+    width: 100%;
+}
+.modal .upload ul.tags li {
+    float: left;
+}
+.modal .upload ul.tags li.tag {
+    background: #e4e6e6;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 5px;
+    margin: 0 2px 2px 0;
+}
+.modal .upload ul.tags li:last-of-type {
+    flex-grow: 1;
+}
+.modal .upload ul.tags li input {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    padding: 0 5px;
+    width: 100%;
+}
+.modal .upload ul.tags li input:focus {
+    outline: none;
+}
+.modal .upload ul.pred {
+    background: #f5f5f5;
+    border-top: 1px solid #dfe2e2;
+    display: inline-flex;
+    flex-wrap: wrap;
+    line-height: 20px;
+    list-style: none;
+    overflow: hidden;
+    padding: 5px;
+    width: 100%;
+}
+.modal .upload ul.pred:empty {
+    display: none;
+}
+.modal .upload ul.pred li.tag {
+    float: left;
+    background: #e4e6e6;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 5px;
+    margin: 0 2px 2px 0;
+}
+.modal .upload div.menu {
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
+}
+.modal .upload div.menu button {
+    background: #ffffff;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 1;
+    outline: none;
+    padding: 4px;
+    transition: opacity 200ms ease;
+}
+.modal .upload div.menu button:last-of-type {
+    background: #27ae60;
+    color: white;
+}
+.modal .upload div.menu button:hover {
+    opacity: 0.8;
+}
+/* BASIC */
+.hidden {
+    display: none;
+}
+.d-b {
+    display: block;
+}
+.d-ib {
+    display: inline-block;
+}
+.fadein {
+    animation: fadein 500ms ease forwards;
+}
+.fadeout {
+    animation: fadeout 500ms ease forwards;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
